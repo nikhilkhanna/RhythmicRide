@@ -22,6 +22,8 @@ public class CarMoment {
 	public double latitude;
 	public double longitude;
 	public String time;
+	public boolean hasSpeedLimit = false;
+	public double speedLimit;
 	
 	public CarMoment(double speed, double latitude, double longitude, String time) {
 		this.speed = speed;
@@ -61,6 +63,8 @@ public class CarMoment {
 			baseSpeed = jArray.getJSONObject(0).getJSONObject("DynamicSpeedInfo").getDouble("BaseSpeed");
 			baseSpeed = 3.6 * baseSpeed;
 			Log.v("base speed", ""+baseSpeed);
+			hasSpeedLimit = true;
+			speedLimit = baseSpeed;
 		}
 		catch(Exception e) {}
 	}

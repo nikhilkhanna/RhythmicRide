@@ -55,10 +55,22 @@ public class MainScreenActivity extends ActionBarActivity {
 	
 	ArrayList<CarMoment> moments;
 	
+	FadingMusicPlayer softPlayer;
+	FadingMusicPlayer mediumPlayer;
+	FadingMusicPlayer hardPlayer;
+	
+	FadingMusicPlayer currentPlayer;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_screen);
+		
+		softPlayer = new FadingMusicPlayer(this, R.raw.letitbe);
+		mediumPlayer = new FadingMusicPlayer(this, R.raw.sandstorm);
+		hardPlayer = new FadingMusicPlayer(this, R.raw.blackskinhead);
+
 		
 		sessionID = getIntent().getStringExtra(MainActivity.SESSION_ID);
 		TextView text = (TextView) findViewById(R.id.testText);
@@ -79,7 +91,7 @@ public class MainScreenActivity extends ActionBarActivity {
 	      	  	requestUpdate();
 	      	  	Log.v("rows", ""+numCurrentRows);
 	      	  	if(moments != null && !moments.isEmpty()) {
-	      	  		moments.get(0).getSpeedLimit(MainScreenActivity.this);
+	      	  		//moments.get(0).getSpeedLimit(MainScreenActivity.this);
 	      	  	}
 	      	  	h.postDelayed(this, 5000);
 	        }
@@ -164,60 +176,33 @@ public class MainScreenActivity extends ActionBarActivity {
 				speeds.add(speedBuilder.get(i));
 				dates.add(dateBuilder.get(i));
 				moments.add(new CarMoment(speedBuilder.get(i), latitudeBuilder.get(i), longitudeBuilder.get(i), dateBuilder.get(i)));
+				moments.get(moments.size()-1).getSpeedLimit(this);
 			}
 		}
 	}
 	
 	public void startMusic(View v) {
 		playingMusic = true;
-		MediaPlayer m = MediaPlayer.create(this, raw.blackskinhead);
-		m.start();
+		currentPlayer = intensityToPlayer();
+		currentPlayer.start();
 	}
 	
 	public void stopMusic(View v) {
 		playingMusic = false;
 	}
 	
-	void fadeOut() {
-	    final Handler h = new Handler();
-	    h.postDelayed(new Runnable()
-	    {
-
-	        @Override
-	        public void run()
-	        {
-	            Log.d("volume", " " + volume);
-	            volume *= .85;
-	            mMediaPlayer.setVolume(volume,volume);
-	            if(volume <= .04) {
-	            	mMediaPlayer.setVolume(0, 0);
-	            	return;
-	            }
-	            h.postDelayed(this, 500);
-	        }
-	        
-	    }, 500); // 1 second delay (takes millis)
-	}
-	
-	void fadeIn() {
-	    final Handler h = new Handler();
-	    h.postDelayed(new Runnable()
-	    {
-
-	        @Override
-	        public void run()
-	        {
-	            Log.d("volume", " " + volume);
-	            volume *= .85;
-	            mMediaPlayer.setVolume(volume,volume);
-	            if(volume <= .04) {
-	            	mMediaPlayer.setVolume(0, 0);
-	            	return;
-	            }
-	            h.postDelayed(this, 500);
-	        }
-	        
-	    }, 500); // 1 second delay (takes millis)
+	private FadingMusicPlayer intensityToPlayer() {
+		double speed = moments.get(0).speed;
+		double speedLimit = moments.get(0).speedLimit;
+		Log.v("speed", ""+speed);
+		Log.v("limit", ""+speedLimit);
+		double intensity = speed/speedLimit;
+		if(intensity <= .86)
+			return softPlayer;
+		if(intensity >= 1.05)
+			return hardPlayer;
+		else
+			return mediumPlayer;
 	}
 
 	@Override
