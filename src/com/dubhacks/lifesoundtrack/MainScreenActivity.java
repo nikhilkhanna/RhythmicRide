@@ -184,7 +184,8 @@ public class MainScreenActivity extends ActionBarActivity {
 	public void startMusic(View v) {
 		playingMusic = true;
 		currentPlayer = intensityToPlayer();
-		currentPlayer.start();
+		currentPlayer.fadeIn();
+		//currentPlayer.start();
 	}
 	
 	public void stopMusic(View v) {
@@ -193,7 +194,7 @@ public class MainScreenActivity extends ActionBarActivity {
 	
 	public void switchPlayer() {
 		FadingMusicPlayer tempPlayer = intensityToPlayer();
-		tempPlayer.start();
+		//tempPlayer.start();
 		if(!currentPlayer.equals(tempPlayer)) {
 			currentPlayer.fadeOut();
 			tempPlayer.fadeIn();
