@@ -10,8 +10,10 @@ public class FadingMusicPlayer {
 	public MediaPlayer mediaPlayer;
 	float volume = 1;
 	boolean isFadingIn;
+	public String name;
 	
-	public FadingMusicPlayer(Context ctx, int resid) {
+	public FadingMusicPlayer(Context ctx, int resid, String name) {
+		this.name=name;
 		mediaPlayer = MediaPlayer.create(ctx, resid);
 		mediaPlayer.setLooping(true);
 	}

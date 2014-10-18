@@ -858,10 +858,12 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f070002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f080003;
+        public static final int abc_search_url_text_holo=0x7f080005;
         public static final int abc_search_url_text_normal=0x7f080000;
         public static final int abc_search_url_text_pressed=0x7f080002;
         public static final int abc_search_url_text_selected=0x7f080001;
+        public static final int black=0x7f080004;
+        public static final int orange=0x7f080003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -955,6 +957,7 @@ containing a value of this type.
     
          */
         public static final int activity_horizontal_margin=0x7f090015;
+        public static final int activity_top_margin=0x7f090017;
         public static final int activity_vertical_margin=0x7f090016;
         /**  The platform's desired fixed height for a dialog along the major axis
          (the screen is in portrait). This may be either a fraction or a dimension.
@@ -1077,7 +1080,15 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int ic_launcher=0x7f020057;
+        public static final int banner=0x7f020057;
+        public static final int blackskinhead=0x7f020058;
+        public static final int ic_launcher=0x7f020059;
+        public static final int letitbe=0x7f02005a;
+        public static final int logo=0x7f02005b;
+        public static final int logoimg=0x7f02005c;
+        public static final int play=0x7f02005d;
+        public static final int sandstorm=0x7f02005e;
+        public static final int transparent=0x7f02005f;
     }
     public static final class id {
         public static final int action_bar=0x7f06001c;
@@ -1091,11 +1102,12 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060016;
         public static final int action_menu_presenter=0x7f060017;
         public static final int action_mode_close_button=0x7f060024;
-        public static final int action_settings=0x7f060042;
+        public static final int action_settings=0x7f060044;
         public static final int activity_chooser_view_content=0x7f060025;
+        public static final int album=0x7f060042;
         public static final int always=0x7f06000b;
         public static final int beginning=0x7f060011;
-        public static final int button1=0x7f060041;
+        public static final int button1=0x7f060043;
         public static final int checkbox=0x7f06002d;
         public static final int collapseActionView=0x7f06000d;
         public static final int default_activity_button=0x7f060028;
@@ -1111,14 +1123,15 @@ containing a value of this type.
         public static final int icon=0x7f06002a;
         public static final int ifRoom=0x7f06000a;
         public static final int image=0x7f060027;
+        public static final int imageView1=0x7f06003f;
+        public static final int imageView2=0x7f060040;
         public static final int listMode=0x7f060001;
         public static final int list_item=0x7f060029;
-        public static final int login=0x7f06003e;
         public static final int middle=0x7f060012;
         public static final int never=0x7f060009;
         public static final int none=0x7f060010;
         public static final int normal=0x7f060000;
-        public static final int password=0x7f06003f;
+        public static final int password=0x7f06003e;
         public static final int progress_circular=0x7f060018;
         public static final int progress_horizontal=0x7f060019;
         public static final int radio=0x7f06002f;
@@ -1139,7 +1152,7 @@ containing a value of this type.
         public static final int split_action_bar=0x7f06001e;
         public static final int submit_area=0x7f060039;
         public static final int tabMode=0x7f060002;
-        public static final int testText=0x7f060040;
+        public static final int testText=0x7f060041;
         public static final int text=0x7f06003c;
         public static final int title=0x7f06002b;
         public static final int top_action_bar=0x7f060020;

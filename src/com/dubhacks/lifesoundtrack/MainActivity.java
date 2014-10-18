@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,6 +42,9 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		android.app.ActionBar a = getActionBar();
+		a.hide();
 	}
 	
 	@Override
@@ -98,8 +102,8 @@ public class MainActivity extends ActionBarActivity {
 	}
 	
 	public void setText(String s) {
-		 TextView v = (TextView) findViewById(R.id.text);
-        v.setText(s);
+		// TextView v = (TextView) findViewById(R.id.text);
+       // v.setText(s);
 	}
 	
 	public void login(View button) {

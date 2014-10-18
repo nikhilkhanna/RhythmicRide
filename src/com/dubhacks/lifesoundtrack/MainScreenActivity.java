@@ -67,15 +67,18 @@ public class MainScreenActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_screen);
 		
-		softPlayer = new FadingMusicPlayer(this, R.raw.letitbe);
-		mediumPlayer = new FadingMusicPlayer(this, R.raw.sandstorm);
-		hardPlayer = new FadingMusicPlayer(this, R.raw.blackskinhead);
+		android.app.ActionBar a = getActionBar();
+		a.hide();
+		
+		softPlayer = new FadingMusicPlayer(this, R.raw.letitbe, "letitbe");
+		mediumPlayer = new FadingMusicPlayer(this, R.raw.sandstorm, "sandstorm");
+		hardPlayer = new FadingMusicPlayer(this, R.raw.blackskinhead, "blackskinhead");
 
 		
 		sessionID = getIntent().getStringExtra(MainActivity.SESSION_ID);
-		TextView text = (TextView) findViewById(R.id.testText);
-		Log.v(sessionID, sessionID);
-		text.setText(sessionID);
+//		TextView text = (TextView) findViewById(R.id.testText);
+//		Log.v(sessionID, sessionID);
+//		text.setText(sessionID);
 		
 		requestUpdate();
 		
@@ -184,6 +187,16 @@ public class MainScreenActivity extends ActionBarActivity {
 	public void startMusic(View v) {
 		playingMusic = true;
 		currentPlayer = intensityToPlayer();
+		if(currentPlayer.name.equals("blackskinhead")) {
+			findViewById(R.id.album).setBackgroundResource(R.drawable.blackskinhead);
+		}
+		else if(currentPlayer.name.equals("letitbe")) {
+			findViewById(R.id.album).setBackgroundResource(R.drawable.letitbe);
+		}
+		else
+		{
+			findViewById(R.id.album).setBackgroundResource(R.drawable.sandstorm);
+		}
 		currentPlayer.fadeIn();
 		//currentPlayer.start();
 	}
@@ -199,6 +212,18 @@ public class MainScreenActivity extends ActionBarActivity {
 			currentPlayer.fadeOut();
 			tempPlayer.fadeIn();
 			currentPlayer = tempPlayer;
+			
+			if(currentPlayer.name.equals("blackskinhead")) {
+				findViewById(R.id.album).setBackgroundResource(R.drawable.blackskinhead);
+			}
+			else if(currentPlayer.name.equals("letitbe")) {
+				findViewById(R.id.album).setBackgroundResource(R.drawable.letitbe);
+			}
+			else
+			{
+				findViewById(R.id.album).setBackgroundResource(R.drawable.sandstorm);
+			}
+			
 		}
 	}
 	
@@ -232,8 +257,8 @@ public class MainScreenActivity extends ActionBarActivity {
 	}
 	
 	public void setText(String myText) {
- 		TextView text = (TextView) findViewById(R.id.testText);
-      text.setText(myText);
+ 		//TextView text = (TextView) findViewById(R.id.testText);
+      //text.setText(myText);
 	}
 
 	@Override
