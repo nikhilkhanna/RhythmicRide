@@ -88,12 +88,12 @@ public class MainScreenActivity extends ActionBarActivity {
 	        {
 	            // do stuff then
 	            // can call h again after work!
+	      	  	if(moments != null && !moments.isEmpty() && playingMusic) {
+	      	  		switchPlayer();
+	      	  	}
 	      	  	requestUpdate();
 	      	  	Log.v("rows", ""+numCurrentRows);
-	      	  	if(moments != null && !moments.isEmpty()) {
-	      	  		//moments.get(0).getSpeedLimit(MainScreenActivity.this);
-	      	  	}
-	      	  	h.postDelayed(this, 5000);
+	      	  	h.postDelayed(this, 10000);
 	        }
 	    }, 100); 
 		
@@ -176,9 +176,9 @@ public class MainScreenActivity extends ActionBarActivity {
 				speeds.add(speedBuilder.get(i));
 				dates.add(dateBuilder.get(i));
 				moments.add(new CarMoment(speedBuilder.get(i), latitudeBuilder.get(i), longitudeBuilder.get(i), dateBuilder.get(i)));
-				moments.get(moments.size()-1).getSpeedLimit(this);
 			}
 		}
+  		moments.get(0).getSpeedLimit(MainScreenActivity.this);
 	}
 	
 	public void startMusic(View v) {
@@ -191,6 +191,16 @@ public class MainScreenActivity extends ActionBarActivity {
 		playingMusic = false;
 	}
 	
+	public void switchPlayer() {
+		FadingMusicPlayer tempPlayer = intensityToPlayer();
+		tempPlayer.start();
+		if(!currentPlayer.equals(tempPlayer)) {
+			currentPlayer.fadeOut();
+			tempPlayer.fadeIn();
+			currentPlayer = tempPlayer;
+		}
+	}
+	
 	private FadingMusicPlayer intensityToPlayer() {
 		double speed = moments.get(0).speed;
 		double speedLimit = moments.get(0).speedLimit;
@@ -198,9 +208,9 @@ public class MainScreenActivity extends ActionBarActivity {
 		Log.v("limit", ""+speedLimit);
 		double intensity = speed/speedLimit;
 		if(intensity <= .86)
-			return softPlayer;
-		if(intensity >= 1.05)
 			return hardPlayer;
+		if(intensity >= 1.05)
+			return softPlayer;
 		else
 			return mediumPlayer;
 	}

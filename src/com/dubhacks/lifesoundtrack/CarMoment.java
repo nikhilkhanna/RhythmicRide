@@ -62,11 +62,14 @@ public class CarMoment {
 			JSONArray jArray = jObject.getJSONObject("Response").getJSONArray("Link");
 			baseSpeed = jArray.getJSONObject(0).getJSONObject("DynamicSpeedInfo").getDouble("BaseSpeed");
 			baseSpeed = 3.6 * baseSpeed;
-			Log.v("base speed", ""+baseSpeed);
+			Log.v("limit: ", ""+baseSpeed);
 			hasSpeedLimit = true;
 			speedLimit = baseSpeed;
 		}
-		catch(Exception e) {}
+		catch(Exception e) {
+			hasSpeedLimit = true;
+			speedLimit = 80;
+		}
 	}
 	
 }

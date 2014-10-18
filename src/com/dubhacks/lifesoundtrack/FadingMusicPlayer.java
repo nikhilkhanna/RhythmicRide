@@ -27,7 +27,7 @@ public class FadingMusicPlayer {
 	        @Override
 	        public void run()
 	        {
-	            Log.d("volume", " " + volume);
+	            Log.d("volume fading out: ", " " + volume);
 	            volume *= .85;
 	            mediaPlayer.setVolume(volume,volume);
 	            if(volume <= .04) {
@@ -42,7 +42,7 @@ public class FadingMusicPlayer {
 	}
 	
 	public void fadeIn() {
-		 volume = 0;
+		 volume = .1f;
 	    final Handler h = new Handler();
 	    h.postDelayed(new Runnable()
 	    {
@@ -50,7 +50,7 @@ public class FadingMusicPlayer {
 	        @Override
 	        public void run()
 	        {
-	            Log.d("volume", " " + volume);
+	            Log.d("volume fading in: ", " " + volume);
 	            volume *= 1.13;
 	            mediaPlayer.setVolume(volume,volume);
 	            if(volume >= .98) {
