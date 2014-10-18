@@ -36,6 +36,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainScreenActivity extends ActionBarActivity {
@@ -167,13 +168,13 @@ public class MainScreenActivity extends ActionBarActivity {
 		}
 	}
 	
-	public void startMusic() {
+	public void startMusic(View v) {
 		playingMusic = true;
 		MediaPlayer m = MediaPlayer.create(this, raw.blackskinhead);
 		m.start();
 	}
 	
-	public void stopMusic() {
+	public void stopMusic(View v) {
 		playingMusic = false;
 	}
 	
