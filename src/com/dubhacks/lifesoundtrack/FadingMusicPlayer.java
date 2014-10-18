@@ -36,9 +36,9 @@ public class FadingMusicPlayer {
 	      		  return;
 	      	  
 	            Log.d("volume fading out: ", " " + volume);
-	            volume *= .94;
+	            volume *= .9;
 	            mediaPlayer.setVolume(volume,volume);
-	            if(volume <= .1) {
+	            if(volume <= .2) {
 	            	mediaPlayer.setVolume(0, 0);
 	            	volume = 0;
 	            	pause();
