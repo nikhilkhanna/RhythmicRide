@@ -8,6 +8,8 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -21,6 +23,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.dubhacks.lifesoundtrack.MainScreenActivity"
+            android:label="@string/title_activity_main_screen"
+            >
         </activity>
     </application>
 

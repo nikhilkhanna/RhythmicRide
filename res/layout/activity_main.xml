@@ -9,8 +9,40 @@
     tools:context="com.dubhacks.lifesoundtrack.MainActivity" >
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="nikhilkh@gmail.com" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/userName"
+        android:layout_below="@+id/userName"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:inputType="text"
+        android:password="false"
+        android:text="Dubhacks2014" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:onClick="login"
+        android:text="Login" />
 
 </RelativeLayout>
